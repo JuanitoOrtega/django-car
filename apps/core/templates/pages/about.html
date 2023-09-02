@@ -73,102 +73,40 @@
         <div class="container">
             <!-- Main title -->
             <div class="main-title">
-                <h1>Executive <span>Team</span></h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+                <h1><span>Equipo</span> ejecutivo</h1>
+                <p>Somos lídes del mercado porque tenemos el mejor equipo.</p>
             </div>
             <!-- Slick slider area start -->
             <div class="slick-slider-area clearfix">
                 <div class="row slick-carousel" data-slick='{"slidesToShow": 4, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                    {% for team in teams %}
                     <div class="slick-slide-item">
                         <div class="team-1">
                             <div class="photo">
                                 <a href="#">
-                                    <img src="{% static 'img/avatar/avatar-12.jpg' %}" alt="team-1" class="img-fluid">
+                                    <img src="{{ team.photo.url }}" alt="{{ team.get_fullname }}" class="img-fluid">
                                 </a>
+                                {% if team.facebook_link or team.twitter_link or team.instagram_link %}
                                 <div class="social-list clearfix">
-                                    <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
+                                    {% if team.facebook_link %}
+                                    <a href="{{ team.facebook_link }}" target="_blank" class="facebook-bg"><i class="fa fa-facebook"></i></a>
+                                    {% endif %}
+                                    {% if team.twitter_link %}
+                                    <a href="{{ team.twitter_link }}" target="_blank" class="twitter-bg"><i class="fa fa-twitter"></i></a>
+                                    {% endif %}
+                                    {% if team.instagram_link %}
+                                    <a href="{{ team.instagram_link }}" target="_blank" class="instagram-bg"><i class="fa fa-instagram"></i></a>
+                                    {% endif %}
                                 </div>
+                                {% endif %}
                             </div>
                             <div class="details">
-                                <h4><a href="team-detail.html">Brandon Miller</a></h4>
-                                <h5>Manager</h5>
+                                <h4><a href="team-detail.html">{{ team.get_fullname }}</a></h4>
+                                <h5>{{ team.designation }}</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="slick-slide-item">
-                        <div class="team-1">
-                            <div class="photo">
-                                <a href="#">
-                                    <img src="{% static 'img/avatar/avatar-9.jpg' %}" alt="team-1" class="img-fluid">
-                                </a>
-                                <div class="social-list clearfix">
-                                    <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="team-detail.html">Michelle Nelson</a></h4>
-                                <h5>Support Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide-item">
-                        <div class="team-1">
-                            <div class="photo">
-                                <a href="#">
-                                    <img src="{% static 'img/avatar/avatar-11.jpg' %}" alt="team-1" class="img-fluid">
-                                </a>
-                                <div class="social-list clearfix">
-                                    <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="team-detail.html">Stone Carolyn</a></h4>
-                                <h5>Creative Director</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide-item">
-                        <div class="team-1">
-                            <div class="photo">
-                                <a href="#">
-                                    <img src="{% static 'img/avatar/avatar-10.jpg' %}" alt="team-1" class="img-fluid">
-                                </a>
-                                <div class="social-list clearfix">
-                                    <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="team-detail.html">Martin Smith</a></h4>
-                                <h5>Web Developer</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide-item">
-                        <div class="team-1">
-                            <div class="photo">
-                                <a href="#">
-                                    <img src="{% static 'img/avatar/avatar-11.jpg' %}" alt="team-1" class="img-fluid">
-                                </a>
-                                <div class="social-list clearfix">
-                                    <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="team-detail.html">Stone Carolyn</a></h4>
-                                <h5>Creative Director</h5>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
