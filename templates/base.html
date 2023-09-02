@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Car Zone - {{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <!-- External CSS libraries -->
@@ -30,14 +30,13 @@
     <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
 </head>
 <body>
-    {% include 'includes/header.html' %}
+    <div class="page_loader"></div>
 
-    {% include 'includes/hero.html' %}
+    {% include 'includes/topbar.html' %}
+    {% include 'includes/navbar.html' %}
 
     {% block content %}
     {% endblock %}
-
-    {% include 'includes/cta.html' %}
 
     {% include 'includes/footer.html' %}
 

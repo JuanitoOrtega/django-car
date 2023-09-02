@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
+
+    {% include 'includes/hero.html' %}
+
     <!-- Featured car start -->
     <div class="featured-car content-area-5">
         <div class="container">
@@ -773,7 +777,6 @@
     </div>
     <!-- Rent car end -->
 
-
     <!-- Our team start -->
     <div class="our-team content-area bg-grea-3">
         <div class="container">
@@ -880,4 +883,7 @@
         </div>
     </div>
     <!-- Our team end -->
+
+    {% include 'includes/cta.html' %}
+
 {% endblock %}
