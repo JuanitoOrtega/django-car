@@ -12,29 +12,31 @@
                 <div class="navbar-collapse collapse w-100" id="navbar">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">
+                            <a class="nav-link {% if '/' == request.path %}active{% endif %}" href="{% url 'home' %}">
                                 Inicio
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'cars' %}">
+                            <a class="nav-link {% if 'cars' in request.path %}active{% endif %}" href="{% url 'cars' %}">
                                 Autos
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'about' %}">
+                            <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'about' %}">
                                 Nosotros
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'services' %}">
+                            <a class="nav-link {% if 'services' in request.path %}active{% endif %}" href="{% url 'services' %}">
                                 Servicios
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
+                        <li class="nav-item">
+                            <a class="nav-link {% if 'contact' in request.path %}active{% endif %}" href="{% url 'contact' %}">
+                                Contacto
+                            </a>
                         </li>
-                        <li class="nav-item dropdown m-hide">
+                        <li class="nav-item m-hide">
                             <a href="#full-page-search" class="nav-link h-icon">
                                 <i class="fa fa-search"></i>
                             </a>

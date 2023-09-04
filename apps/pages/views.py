@@ -1,23 +1,21 @@
 from django.shortcuts import render
 
+from apps.cars.models import Car
 from .models import Team
 
 
 # Create your views here.
 def home(request):
     teams = Team.objects.all()
+    featured_cars = Car.objects.filter(is_featured=True).order_by('-created_at')
+    latest_cars = Car.objects.all().order_by('-created_at')
     context = {
         'title': 'Welcome',
-        'teams': teams
+        'teams': teams,
+        'featured_cars': featured_cars,
+        'latest_cars': latest_cars,
     }
     return render(request, 'pages/home.html', context)
-
-
-def cars(request):
-    context = {
-        'title': 'Cars',
-    }
-    return render(request, 'pages/cars.html', context)
 
 
 def about(request):

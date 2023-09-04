@@ -6,7 +6,7 @@ class Team(models.Model):
     first_name = models.CharField(max_length=255, verbose_name='Nombres')
     last_name = models.CharField(max_length=255, verbose_name='Apellidos')
     designation = models.CharField(max_length=255, verbose_name='Cargo')
-    photo = models.ImageField(upload_to='photos/%Y/%m/%d/', verbose_name='Foto')
+    photo = models.ImageField(upload_to='photos/teams/%Y/%m/%d/', verbose_name='Foto')
     facebook_link = models.URLField(max_length=255, blank=True, null=True, verbose_name='Facebook')
     twitter_link = models.URLField(max_length=255, blank=True, null=True, verbose_name='Twitter')
     instagram_link = models.URLField(max_length=255, blank=True, null=True, verbose_name='Instagram')

@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+    {% include 'includes/hero.html' %}
+
+    <!-- Featured car start -->
+    <div class="featured-car content-area-5">
+        <div class="container">
+            <!-- Main title -->
+            <div class="main-title">
+                <h1><span>Autos</span> destacados</h1>
+                <p>Descubre una colección exclusiva de autos de ensueño que combinan elegancia y rendimiento excepcionales.</p>
+            </div>
+            <!-- Slick slider area start -->
+            <div class="slick-slider-area clearfix">
+                <div class="row slick-carousel" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                    {% for fc in featured_cars %}
+                    <div class="slick-slide-item">
+                        <div class="car-box-3">
+                            <div class="car-thumbnail">
+                                <a href="{% url 'car_detail' fc.pk %}" class="car-img">
+                                    <div class="tag-2">{% if fc.is_featured %}Destacado{% endif %}</div>
+                                    <div class="price-box">
+                                        <span class="del"><del>${{ fc.normal_price | intcomma }}</del></span>
+                                        <br>
+                                        <span>${{ fc.price | intcomma }}</span>
+                                    </div>
+                                    <img class="d-block w-100" src="{{ fc.photo.url }}" alt="car">
+                                </a>
+                                {% if fc.photo_1 or fc.photo_2 or fc.photo_3 or fc.photo_4 %}
+                                <div class="carbox-overlap-wrapper">
+                                    <div class="overlap-box">
+                                        <div class="overlap-btns-area">
+                                            <div class="car-magnify-gallery">
+                                                <a href="{{ fc.photo.url }}" class="overlap-btn">
+                                                    <i class="fa fa-expand"></i>
+                                                    <img class="hidden" src="{{ fc.photo.url }}">
+                                                </a>
+                                                {% if fc.photo_1 %}
+                                                <a href="{{ fc.photo_1.url }}" class="hidden">
+                                                    <img class="hidden" src="{{ fc.photo_1.url }}">
+                                                </a>
+                                                {% endif %}
+                                                {% if fc.photo_2 %}
+                                                <a href="{{ fc.photo_2.url }}" class="hidden">
+                                                    <img class="hidden" src="{{ fc.photo_2.url }}">
+                                                </a>
+                                                {% endif %}
+                                                {% if fc.photo_3 %}
+                                                <a href="{{ fc.photo_3.url }}" class="hidden">
+                                                    <img class="hidden" src="{{ fc.photo_3.url }}">
+                                                </a>
+                                                {% endif %}
+                                                {% if fc.photo_4 %}
+                                                <a href="{{ fc.photo_4.url }}" class="hidden">
+                                                    <img class="hidden" src="{{ fc.photo_4.url }}">
+                                                </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="detail">
+                                <h1 class="title">
+                                    <a href="{% url 'car_detail' fc.pk %}">{{ fc.title }}</a>
+                                </h1>
+                                <div class="location">
+                                    <a href="{% url 'car_detail' fc.pk %}">
+                                        <i class="flaticon-pin"></i> {{ fc.city }}, {{ fc.get_state_name }}
+                                    </a>
+                                </div>
+                                <ul class="facilities-list clearfix">
+                                    <li>{{ fc.fuel_type }}</li>
+                                    <li>{{ fc.kilometres | intcomma }} km</li>
+                                    <li>{{ fc.transmission }}</li>
+                                    <li>{{ fc.body_style }}</li>
+                                    <li>{{ fc.color }}</li>
+                                    <li>{{ fc.year }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="slick-btn">
+                    <div class="slick-prev slick-arrow-buton sab-4">
+                        <i class="fa fa-angle-left"></i>
+                    </div>
+                    <div class="slick-next slick-arrow-buton sab-3">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Featured car end -->
+
+    <!-- Rent car start -->
+    <div class="featured-car content-area">
+        <div class="container">
+            <!-- Main title -->
+            <div class="main-title">
+                <h1>Últimos <span>autos</span></h1>
+                <p>Explora los autos más recientes en nuestro catálogo.</p>
+            </div>
+            <div class="row">
+                {% for lc in latest_cars %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="car-box">
+                        <div class="car-thumbnail">
+                            <a href="{% url 'car_detail' lc.pk %}" class="car-img">
+                                <div class="tag">{{ lc.condition }}</div>
+                                <img class="d-block w-100" src="{{ lc.photo.url }}" alt="car">
+                                <div class="facilities-list clearfix">
+                                    <ul>
+                                        <li>
+                                            <span><i class="flaticon-way"></i></span>{{ lc.kilometres | intcomma }} km
+                                        </li>
+                                        <li>
+                                            <span><i class="flaticon-calendar-1"></i></span>{{ lc.year }}
+                                        </li>
+                                        <li>
+                                            <span><i class="flaticon-manual-transmission"></i></span>{{ lc.transmission }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                            <div class="carbox-overlap-wrapper">
+                                <div class="overlap-box">
+                                    <div class="overlap-btns-area">
+                                        <div class="car-magnify-gallery">
+                                            <a href="{{ lc.photo.url }}" class="overlap-btn">
+                                                <i class="fa fa-expand"></i>
+                                                <img class="hidden" src="{{ lc.photo.url }}">
+                                            </a>
+                                            {% if lc.photo_1 %}
+                                            <a href="{{ lc.photo_1.url }}" class="hidden">
+                                                <img class="hidden" src="{{ lc.photo_1.url }}">
+                                            </a>
+                                            {% endif %}
+                                            {% if lc.photo_2 %}
+                                            <a href="{{ lc.photo_2.url }}" class="hidden">
+                                                <img class="hidden" src="{{ lc.photo_2.url }}">
+                                            </a>
+                                            {% endif %}
+                                            {% if lc.photo_3 %}
+                                            <a href="{{ lc.photo_3.url }}" class="hidden">
+                                                <img class="hidden" src="{{ lc.photo_3.url }}">
+                                            </a>
+                                            {% endif %}
+                                            {% if lc.photo_4 %}
+                                            <a href="{{ lc.photo_4.url }}" class="hidden">
+                                                <img class="hidden" src="{{ lc.photo_4.url }}">
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <h1 class="title">
+                                <a href="{% url 'car_detail' lc.pk %}">{{ lc.title }}</a>
+                            </h1>
+                            <div class="location">
+                                <a href="{% url 'car_detail' lc.pk %}">
+                                    <i class="flaticon-pin"></i> {{ lc.city }}, {{ lc.get_state_name }}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footer clearfix">
+                            <div class="pull-left ratings days">
+                                <p class="cartype">{{ lc.body_style }}</p>
+                            </div>
+                            <div class="pull-right">
+                                <p class="price">${{ lc.price | intcomma }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Rent car end -->
+
+    <!-- Our team start -->
+    <div class="our-team content-area bg-grea-3">
+        <div class="container">
+            <!-- Main title -->
+            <div class="main-title">
+                <h1><span>Equipo</span> ejecutivo</h1>
+                <p>Somos lídes del mercado porque tenemos el mejor equipo.</p>
+            </div>
+            <!-- Slick slider area start -->
+            <div class="slick-slider-area clearfix">
+                <div class="row slick-carousel" data-slick='{"slidesToShow": 4, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                    {% for team in teams %}
+                    <div class="slick-slide-item">
+                        <div class="team-1">
+                            <div class="photo">
+                                <a href="#">
+                                    <img src="{{ team.photo.url }}" alt="{{ team.get_fullname }}" class="img-fluid">
+                                </a>
+                                {% if team.facebook_link or team.twitter_link or team.instagram_link %}
+                                <div class="social-list clearfix">
+                                    {% if team.facebook_link %}
+                                    <a href="{{ team.facebook_link }}" target="_blank" class="facebook-bg"><i class="fa fa-facebook"></i></a>
+                                    {% endif %}
+                                    {% if team.twitter_link %}
+                                    <a href="{{ team.twitter_link }}" target="_blank" class="twitter-bg"><i class="fa fa-twitter"></i></a>
+                                    {% endif %}
+                                    {% if team.instagram_link %}
+                                    <a href="{{ team.instagram_link }}" target="_blank" class="instagram-bg"><i class="fa fa-instagram"></i></a>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="details">
+                                <h4><a href="team-detail.html">{{ team.get_fullname }}</a></h4>
+                                <h5>{{ team.designation }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our team end -->
+
+    {% include 'includes/cta.html' %}
+
+{% endblock %}

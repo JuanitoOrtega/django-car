@@ -1,3 +1,5 @@
+let base_url = window.location.origin;
+
 $(function () {
 
     'use strict';
@@ -108,19 +110,19 @@ $(function () {
                     $('.sticky-header').addClass('header-shrink');
                 }
                 if($('.do-sticky').length < 1) {
-                    $('.company-logo img').attr('src', '../static/img/logos/black-logo.png');
+                    $('.company-logo img').attr('src', base_url + '/static/img/logos/black-logo.png');
                 }
             }
             else {
                 $('.sticky-header').removeClass('header-shrink');
                 if($('.do-sticky').length < 1 && $('.fixed-header').length == 0 && $('.fixed-header2').length == 0) {
-                    $('.company-logo img').attr('src', '../static/img/logos/logo.png');
+                    $('.company-logo img').attr('src', base_url + '/static/img/logos/logo.png');
                 } else {
-                    $('.company-logo img').attr('src', '../static/img/logos/black-logo.png');
+                    $('.company-logo img').attr('src', base_url + '/static/img/logos/black-logo.png');
                 }
             }
         } else {
-            $('.company-logo img').attr('src', '../static/img/logos/black-logo.png');
+            $('.company-logo img').attr('src', base_url + '/static/img/logos/black-logo.png');
         }
     }
 
@@ -320,7 +322,7 @@ $(function () {
     $(document).ready(function () {
         $(".player").mb_YTPlayer(
             {
-                mobileFallbackImage: '../static/img/banner/banner-1.jpg'
+                mobileFallbackImage: base_url + '/static/img/banner/banner-1.jpg'
             }
         );
     });
