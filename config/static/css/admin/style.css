@@ -1,0 +1,23 @@
+#header {
+    background-color: #f8f8f8;
+    color: #79aec8;
+}
+
+#logout-form button,
+#header a:link,
+#header a:visited {
+    color: #79aec8;
+}
+
+.theme-toggle svg.theme-icon-when-auto,
+.theme-toggle svg.theme-icon-when-dark,
+.theme-toggle svg.theme-icon-when-light {
+    fill: #79aec8;
+    color: #f8f8f8;
+}
+
+div.breadcrumbs,
+.module h2,
+.module caption {
+    background: #666;
+}
