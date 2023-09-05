@@ -82,8 +82,8 @@ ul {
     color: #fff;
 }
 
-.google-bg {
-    background: #db4437;
+.instagram-bg {
+    background: #F77737;
     color: #fff;
 }
 
@@ -117,8 +117,8 @@ ul {
     color: #fff;
 }
 
-.google-bg:hover {
-    background: #dc4e41;
+.instagram-bg:hover {
+    background: #F56040;
     color: #fff;
 }
 
@@ -919,11 +919,11 @@ input[type=checkbox]:checked + label:before {
 }
 
 .banner-bg {
-    
+
 }
 
 .item-bg {
-    
+
     height: 100vh;
     /*animation: bgburnsEast 25s linear infinite alternate;
     -webkit-animation: bgburnsEast 25s linear infinite alternate;*/
@@ -1363,15 +1363,11 @@ input[type=checkbox]:checked + label:before {
 
 .search-fields {
     min-height: 45px;
-    padding: 0;
+    padding: 0 5px;
     border-radius: 3px;
     box-shadow: none;
     border: 1px solid #e0e0e0;
     background: #fff;
-}
-
-.form-control {
-    padding-left: 15px;
 }
 
 .search-fields button {
@@ -1700,7 +1696,7 @@ input[type=checkbox]:checked + label:before {
 
 .sb-7 .search-fields {
     min-height: 45px;
-    padding: 0;
+    padding: 0 5px;
     box-shadow: none;
     border: 1px solid #e0e0e0;
     background: #fff;
@@ -3926,8 +3922,8 @@ footer {
     background: #56d7fe!important;
 }
 
-.footer .google-bg:hover {
-    background: #dc4e41!important;
+.footer .instagram-bg:hover {
+    background: #F56040!important;
 }
 
 .footer .linkedin-bg:hover {
@@ -4658,7 +4654,7 @@ footer {
 
 /** Listings parallax start **/
 .listings-parallax {
-    
+
     z-index: 0;
     background-position: center center;
     background-repeat: no-repeat;
@@ -5474,7 +5470,7 @@ footer {
 }
 
 .contact-section .bg-img {
-    
+
     background-size: cover;
     top: 0;
     bottom: 0;
@@ -6055,7 +6051,7 @@ footer {
 
 .search-box-4 .search-fields {
     min-height: 40px;
-    padding: 0;
+    padding: 0 5px;
     border-radius: 3px;
     box-shadow: none;
     border: 1px solid #e0e0e0;
@@ -6827,7 +6823,7 @@ footer {
 
 /** Carousel indicators section start **/
 .carousel-indicators-section{
-    background: red;
+    /* background: red; */
     display: inline-block;
     width: 100%;
 }
@@ -9169,7 +9165,7 @@ table {
         line-height: normal;
         margin-bottom: 15px;
     }
-    
+
     .alert {
         text-transform: uppercase;
         font-size: 12px;

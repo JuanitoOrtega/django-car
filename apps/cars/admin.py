@@ -11,7 +11,7 @@ class CarAdmin(admin.ModelAdmin):
 
     thumbnail.short_description = 'Foto'
 
-    list_display = ['thumbnail', 'title', 'city', 'color', 'model', 'year', 'body_style', 'fuel_type', 'is_featured']
+    list_display = ['thumbnail', 'title', 'city', 'price', 'color', 'model', 'year', 'body_style', 'fuel_type', 'is_featured']
     list_display_links = ['thumbnail', 'title']
     search_fields = ['title', 'city', 'model', 'brand', 'body_style', 'fuel_type']
     list_filter = ['year', 'state', 'brand']

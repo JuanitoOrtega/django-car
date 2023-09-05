@@ -43,9 +43,9 @@
     <!-- Full Page Search -->
     <div id="full-page-search">
         <button type="button" class="close">×</button>
-        <form action="https://storage.googleapis.com/theme-vessel/carhouse/index.html#" class="search-header">
-            <input type="search" value="" placeholder="type keyword(s) here. Eg: audi, benz etc" />
-            <button type="submit" class="btn btn-sm button-theme">Search</button>
+        <form action="{% url 'search' %}" class="search-header">
+            <input type="search" value="" placeholder="Buscar aquí. Por ejemplo: audi, benz, etc." name="keyword" />
+            <button type="submit" class="btn btn-sm button-theme">Buscar</button>
         </form>
     </div>
 
@@ -82,7 +82,7 @@
                             <div class="col-lg-6 modal-right">
                                 <div class="modal-right-content">
                                     <section>
-                                        <h3>Features</h3>
+                                        <h3>Características</h3>
                                         <div class="features">
                                             <ul class="bullets">
                                                 <li>Cruise Control</li>
@@ -97,7 +97,7 @@
                                         </div>
                                     </section>
                                     <section>
-                                        <h3>Overview</h3>
+                                        <h3>Datos generales</h3>
                                         <ul class="bullets">
                                             <li>Model</li>
                                             <li>Year</li>
@@ -110,9 +110,9 @@
                                         </ul>
                                     </section>
                                     <div class="description">
-                                        <h3>Description</h3>
+                                        <h3>Descripción</h3>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                                        <a href="car-details.html" class="btn btn-md btn-round btn-theme">Show Detail</a>
+                                        <a href="car-details.html" class="btn btn-md btn-round btn-theme">Mostrar detalles</a>
                                     </div>
                                 </div>
                             </div>

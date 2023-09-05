@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+    <!-- Banner start -->
+    <div class="sub-banner overview-bgi">
+        <div class="container breadcrumb-area">
+            <div class="breadcrumb-areas">
+                <h1>Resultados de búsqueda</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li class="active">Buscar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Banner end -->
+
+    <!-- Search box 3 start -->
+    <div class="search-box-3 sb-7 bg-active">
+        <div class="container">
+            <div class="search-area-inner">
+                <div class="search-contents">
+                    <form action="{% url 'search' %}" method="GET">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="form-group">
+                                    <select class="form-control search-fields" name="brand">
+                                        <option selected="true" disabled="disabled">Seleccionar marca</option>
+                                        {% for brand in brands %}
+                                        <option value="{{ brand }}">{{ brand }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="form-group">
+                                    <select class="form-control search-fields" name="model">
+                                        <option selected="true" disabled="disabled">Seleccionar modelo</option>
+                                        {% for model in models %}
+                                        <option value="{{ model }}">{{ model }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="form-group">
+                                    <select class="form-control search-fields" name="city">
+                                        <option selected="true" disabled="disabled">Seleccionar ubicación</option>
+                                        {% for city in cities %}
+                                        <option value="{{ city }}">{{ city }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="form-group">
+                                    <select class="form-control search-fields" name="year">
+                                        <option selected="true" disabled="disabled">Seleccionar año</option>
+                                        {% for year in years %}
+                                        <option value="{{ year }}">{{ year }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="form-group">
+                                    <select class="form-control search-fields" name="condition">
+                                        <option selected="true" disabled="disabled">Seleccionar condición</option>
+                                        {% for condition in conditions %}
+                                        <option value="{{ condition }}">{{ condition }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="form-group">
+                                    <select class="form-control search-fields" name="transmission">
+                                        <option selected="true" disabled="disabled">Seleccionar transmisión</option>
+                                        {% for transmission in transmissions %}
+                                        <option value="{{ transmission }}">{{ transmission }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="form-group">
+                                    <div class="range-slider">
+                                        <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="form-group">
+                                    <button class="btn btn-block button-theme btn-md">
+                                        <i class="fa fa-search"></i> Buscar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search box 3 end -->
+
+    <!-- Featured car start -->
+    <div class="featured-car content-area">
+        <div class="container">
+            <!-- Main title -->
+            <div class="main-title">
+                <h1>Los <span>autos</span> de tu búsqueda</h1>
+                <p>Todos los autos que coinciden con los términos de tu búsqueda.</p>
+            </div>
+            <div class="row">
+                {% for car in cars %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="car-box">
+                        <div class="car-thumbnail">
+                            <a href="{% url 'car_detail' car.pk %}" class="car-img">
+                                <div class="tag">{{ car.condition }}</div>
+                                <img class="d-block w-100" src="{{ car.photo.url }}" alt="car">
+                                <div class="facilities-list clearfix">
+                                    <ul>
+                                        <li>
+                                            <span><i class="flaticon-way"></i></span>{{ car.kilometres | intcomma }} km
+                                        </li>
+                                        <li>
+                                            <span><i class="flaticon-calendar-1"></i></span>{{ car.year }}
+                                        </li>
+                                        <li>
+                                            <span><i class="flaticon-manual-transmission"></i></span>{{ car.transmission }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                            <div class="carbox-overlap-wrapper">
+                                <div class="overlap-box">
+                                    <div class="overlap-btns-area">
+                                        <a class="overlap-btn" data-toggle="modal" data-target="#carOverviewModal">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <div class="car-magnify-gallery">
+                                            <a href="{{ car.photo.url }}" class="overlap-btn" data-sub-html="<h4>Lamborghini Huracán</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>">
+                                                <i class="fa fa-expand"></i>
+                                                <img class="hidden" src="{{ car.photo.url }}" alt="hidden-img">
+                                            </a>
+                                            {% if car.photo_1 %}
+                                            <a href="{{ car.photo_1.url }}" class="hidden" data-sub-html="<h4>Lexus GS Red Car</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>">
+                                                <img class="hidden" src="{{ car.photo_1.url }}" alt="hidden-img">
+                                            </a>
+                                            {% endif %}
+                                            {% if car.photo_2 %}
+                                            <a href="{{ car.photo_2.url }}" class="hidden" data-sub-html="<h4>2015 Porsche Cayenne</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>">
+                                                <img class="hidden" src="{{ car.photo_2.url }}" alt="hidden-img">
+                                            </a>
+                                            {% endif %}
+                                            {% if car.photo_3 %}
+                                            <a href="{{ car.photo_3.url }}" class="hidden" data-sub-html="<h4>Toyota Corolla</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>">
+                                                <img class="hidden" src="{{ car.photo_3.url }}" alt="hidden-img">
+                                            </a>
+                                            {% endif %}
+                                            {% if car.photo_4 %}
+                                            <a href="{{ car.photo_4.url }}" class="hidden" data-sub-html="<h4>Toyota Prius Specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>">
+                                                <img class="hidden" src="{{ car.photo_4.url }}" alt="hidden-img">
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <h1 class="title">
+                                <a href="{% url 'car_detail' car.pk %}">{{ car.title }}</a>
+                            </h1>
+                            <div class="location">
+                                <a href="{% url 'car_detail' car.pk %}">
+                                    <i class="flaticon-pin"></i>{{ car.city }}, {{ car.get_state_name }}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footer clearfix">
+                            <div class="pull-left ratings days">
+                                <p class="cartype">{{ car.body_style }}</p>
+                            </div>
+                            <div class="pull-right">
+                                <p class="price">${{ car.price | intcomma }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Featured car end -->
+{% endblock %}
