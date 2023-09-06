@@ -5,10 +5,10 @@
     <div class="sub-banner overview-bgi">
         <div class="container breadcrumb-area">
             <div class="breadcrumb-areas">
-                <h1>Create an account</h1>
+                <h1>Crear una cuenta</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li class="active">Sign Up</li>
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li class="active">Registrarse</li>
                 </ul>
             </div>
         </div>
@@ -25,37 +25,39 @@
                                 <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
                             </a>
                         </div>
-                        <h3>Create an account</h3>
-                        <form action="#" method="GET">
+                        <h3>Crear una cuenta</h3>
+                        {% include 'includes/messages.html' %}
+                        <form action="{% url 'signup' %}" method="POST">
+                            {% csrf_token %}
                             <div class="form-group form-box">
-                                <input type="text" name="firstname" class="input-text" placeholder="First Name">
+                                <input type="text" name="firstname" class="input-text" placeholder="Nombres" required>
                                 <i class="fa fa-user"></i>
                             </div>
                             <div class="form-group form-box">
-                                <input type="text" name="lastname" class="input-text" placeholder="Last Name">
+                                <input type="text" name="lastname" class="input-text" placeholder="Apellidos" required>
                                 <i class="fa fa-user"></i>
                             </div>
                             <div class="form-group form-box">
-                                <input type="text" name="username" class="input-text" placeholder="Username">
+                                <input type="text" name="username" class="input-text" placeholder="Usuario" required>
                                 <i class="fa fa-user"></i>
                             </div>
                             <div class="form-group form-box">
-                                <input type="email" name="email" class="input-text" placeholder="Email Address">
+                                <input type="email" name="email" class="input-text" placeholder="Correo electrónico" required>
                                 <i class="flaticon-mail"></i>
                             </div>
                             <div class="form-group form-box">
-                                <input type="password" name="password" class="input-text" placeholder="Password">
+                                <input type="password" name="password" class="input-text" placeholder="Contraseña" required>
                                 <i class="flaticon-lock"></i>
                             </div>
                             <div class="form-group form-box">
-                                <input type="password" name="confirm_password" class="input-text" placeholder="Confirm Password">
+                                <input type="password" name="confirm_password" class="input-text" placeholder="Confirmar contraseña" required>
                                 <i class="flaticon-lock"></i>
                             </div>
                             <div class="form-group mb-0 clearfix">
-                                <button type="submit" class="btn-md btn-theme float-left">Register</button>
+                                <button type="submit" class="btn-md btn-theme float-left">Registrarse</button>
                             </div>
                             <div class="extra-login clearfix">
-                                <span>Or Login With</span>
+                                <span>O inicia sesión con</span>
                             </div>
                             <div class="clearfix"></div>
                             <ul class="social-list">
@@ -63,7 +65,7 @@
                                 <li><a href="#" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
                             </ul>
                         </form>
-                        <p>Already a member? <a href="{% url 'login' %}" class="thembo"> Login here</a></p>
+                        <p>¿No tienes una cuenta? <a href="{% url 'login' %}" class="thembo"> Inicia sesión aquí</a></p>
                     </div>
                 </div>
             </div>

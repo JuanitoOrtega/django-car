@@ -5,10 +5,10 @@
     <div class="sub-banner overview-bgi">
         <div class="container breadcrumb-area">
             <div class="breadcrumb-areas">
-                <h1>Login To Your Account</h1>
+                <h1>Ingresa a tu cuenta</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li class="active">Login</li>
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li class="active">Iniciar sesión</li>
                 </ul>
             </div>
         </div>
@@ -25,21 +25,22 @@
                                 <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
                             </a>
                         </div>
-                        <h3>Sign into your account</h3>
-                        <form action="#" method="GET">
+                        <h3>Ingresa a tu cuenta</h3>
+                        <form action="{% url 'login' %}" method="POST">
+                            {% csrf_token %}
                             <div class="form-group form-box">
-                                <input type="email" name="email" class="input-text" placeholder="Email Address" required>
+                                <input type="email" name="email" class="input-text" placeholder="Correo electrónico" required>
                                 <i class="flaticon-mail"></i>
                             </div>
                             <div class="form-group form-box">
-                                <input type="password" name="Password" class="input-text" placeholder="Password" required>
+                                <input type="password" name="Password" class="input-text" placeholder="Contraseña" required>
                                 <i class="flaticon-lock"></i>
                             </div>
                             <div class="form-group mb-0 clearfix">
-                                <button type="submit" class="btn-md btn-theme float-left">Login</button>
+                                <button type="submit" class="btn-md btn-theme float-left">Iniciar sesión</button>
                             </div>
                             <div class="extra-login clearfix">
-                                <span>Or Login With</span>
+                                <span>O inicia sesión con</span>
                             </div>
                             <div class="clearfix"></div>
                             <ul class="social-list">
@@ -47,7 +48,7 @@
                                 <li><a href="#" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
                             </ul>
                         </form>
-                        <p>Don't have an account? <a href="{% url 'signup' %}" class="thembo"> Register here</a></p>
+                        <p>¿No tienes una cuenta? <a href="{% url 'signup' %}" class="thembo"> Registrate aquí</a></p>
                     </div>
                 </div>
             </div>

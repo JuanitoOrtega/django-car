@@ -481,3 +481,8 @@ $(function () {
         }
     }).trigger("resize");
 })(jQuery);
+
+// Cerrar alert
+setTimeout(function () {
+    $('#message').fadeOut('slow');
+}, 5000);

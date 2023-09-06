@@ -49,17 +49,3 @@ def contact(request):
         'title': 'Contact',
     }
     return render(request, 'pages/contact.html', context)
-
-
-def login(request):
-    context = {
-        'title': 'Login',
-    }
-    return render(request, 'pages/login.html', context)
-
-
-def signup(request):
-    context = {
-        'title': 'Sign Up',
-    }
-    return render(request, 'pages/signup.html', context)
