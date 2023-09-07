@@ -6,17 +6,26 @@
                     <div class="list-inline">
                         <a href="tel:+59163470711"><i class="fa fa-phone"></i>+591-63470711</a>
                         <a href="tel:info@example.com"><i class="fa fa-envelope"></i>info@example.com</a>
-                        <a href="#"><i class="fa fa-clock-o"></i>Lun - Vie: 8:00am - 4:00pm</a>
+                        <span class="horario"><i class="fa fa-clock-o"></i> Lun - Vie: 8:00 am - 4:00 pm</span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-5">
                     <ul class="top-social-media pull-right">
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'dashboard' %}" class="sign-in"><i class="fa fa-tachometer"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}" class="sign-in"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                        </li>
+                        {% else %}
                         <li>
                             <a href="{% url 'login' %}" class="sign-in"><i class="fa fa-sign-in"></i> Iniciar sesión</a>
                         </li>
                         <li>
                             <a href="{% url 'signup' %}" class="sign-in"><i class="fa fa-user"></i> Registrarse</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
