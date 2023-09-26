@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
 
 {% block content %}
     <div class="sub-banner overview-bgi">
@@ -21,7 +23,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="form-section">
                         <h3>Crear una cuenta</h3>
-                        {% include 'includes/messages.html' %}
+                        {% include 'includes/notification.html' %}
                         <form action="{% url 'signup' %}" method="POST">
                             {% csrf_token %}
                             <div class="form-group form-box">
@@ -56,8 +58,8 @@
                             </div>
                             <div class="clearfix"></div>
                             <ul class="social-list">
-                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
-                                <li><a href="#" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
+                                <li><a href="{% provider_login_url "facebook" %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
+                                <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
                             </ul>
                         </form>
                         <p>¿No tienes una cuenta? <a href="{% url 'login' %}" class="thembo"> Inicia sesión aquí</a></p>

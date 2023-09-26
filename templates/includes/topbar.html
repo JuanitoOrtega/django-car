@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-7">
                     <div class="list-inline">
-                        <a href="tel:+59163470711"><i class="fa fa-phone"></i>+591-63470711</a>
+                        <a href="tel:59163470711"><i class="fa fa-phone"></i>+591-63470711</a>
                         <a href="tel:info@example.com"><i class="fa fa-envelope"></i>info@example.com</a>
                         <span class="horario"><i class="fa fa-clock-o"></i> Lun - Vie: 8:00 am - 4:00 pm</span>
                     </div>
@@ -12,6 +12,11 @@
                 <div class="col-lg-4 col-md-4 col-sm-5">
                     <ul class="top-social-media pull-right">
                         {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                        <li>
+                            <a href="/admin" target="_blank" class="sign-in">Admin</a>
+                        </li>
+                        {% endif %}
                         <li>
                             <a href="{% url 'dashboard' %}" class="sign-in"><i class="fa fa-tachometer"></i> Dashboard</a>
                         </li>

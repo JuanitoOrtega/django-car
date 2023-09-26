@@ -1,7 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from apps.contacts.models import Contact
 
 
 # Create your views here.
@@ -51,13 +53,17 @@ def signup(request):
     return render(request, 'users/signup.html', context)
 
 
+@login_required(login_url='login')
 def dashboard(request):
+    user_inquiry = Contact.objects.filter(user_id=request.user.id).order_by('-created_at')
     context = {
         'title': 'Dashboard',
+        'inquiries': user_inquiry
     }
     return render(request, 'users/dashboard.html', context)
 
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    messages.success(request, 'Has cerrado sesión exitosamente.')
+    return redirect('login')

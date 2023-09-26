@@ -6,10 +6,10 @@
     <div class="sub-banner overview-bgi">
         <div class="container breadcrumb-area">
             <div class="breadcrumb-areas">
-                <h1>Contact Us</h1>
+                <h1>Contacto</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li class="active">Contact Us</li>
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li class="active">Contacto</li>
                 </ul>
             </div>
         </div>
@@ -21,41 +21,43 @@
         <div class="container">
             <!-- Main title -->
             <div class="main-title text-center">
-                <h1>Contact <span>Us</span></h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+                <h1>Contacto</h1>
+                <p>Si tiene alguna consulta adicional, no dude con ponerse en contacto con nosotros.</p>
             </div>
-            <form action="#" method="POST" enctype="multipart/form-data">
+            {% include 'includes/notification.html' %}
+            <form action="{% url "contact" %}" method="POST">
+                {% csrf_token %}
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="row">
                             <div class="col-md-6 text-left">
                                 <div class="form-group name">
-                                    <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                                    <input type="text" name="full_name" class="form-control" placeholder="Nombre completo" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group email">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                    <input type="mail" name="email" class="form-control" placeholder="Correo electrónico" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group subject">
-                                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                                    <input type="text" name="subject" class="form-control" placeholder="Asunto" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group number">
-                                    <input type="text" name="phone" class="form-control" placeholder="Phone Number">
+                                    <input type="tel" name="phone" class="form-control" placeholder="Número de teléfono">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group message">
-                                    <textarea class="form-control" name="message" placeholder="Write message"></textarea>
+                                    <textarea class="form-control" name="message" placeholder="Escribe un mensaje"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="send-btn text-center">
-                                    <button type="submit" class="btn btn-md button-theme">Send Message</button>
+                                    <button type="submit" class="btn btn-md button-theme">Enviar mensaje</button>
                                 </div>
                             </div>
                         </div>
@@ -67,8 +69,8 @@
                                     <i class="flaticon-phone"></i>
                                 </div>
                                 <div class="detail">
-                                    <h5>Phone:</h5>
-                                    <p><a href="#">0477 8556 552</a></p>
+                                    <h5>Teléfono:</h5>
+                                    <p><a href="tel:59163470711">+591-63470711</a></p>
                                 </div>
                             </div>
                             <div class="ci-box">
@@ -76,8 +78,8 @@
                                     <i class="flaticon-mail"></i>
                                 </div>
                                 <div class="detail">
-                                    <h5>Email:</h5>
-                                    <p><a href="#">info@themevessel.com</a></p>
+                                    <h5>Correo electrónico:</h5>
+                                    <p><a href="#">info@example.com</a></p>
                                 </div>
                             </div>
                             <div class="ci-box">
@@ -86,7 +88,7 @@
                                 </div>
                                 <div class="detail">
                                     <h5>Web:</h5>
-                                    <p><a href="#">info@themevessel.com</a></p>
+                                    <p><a href="https://example.com" target="_blank">www.example.com</a></p>
                                 </div>
                             </div>
                             <div class="ci-box mb-0">

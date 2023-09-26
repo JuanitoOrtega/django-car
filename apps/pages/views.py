@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from apps.cars.models import Car
 from .models import Team
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -45,7 +48,32 @@ def services(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        full_name = request.POST['full_name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        phone = request.POST['phone']
+        message = request.POST['message']
+
+        email_subject = 'Tienes un nuevo mensaje desde tu sitio web Car, con el asunto: ' + subject
+        message_body = 'Nombre: ' + full_name + '. Correo electrónico: ' + email + '. Teléfono: ' + phone + '. Mensaje: ' + message
+
+        admin_info = User.objects.get(is_superuser=True)
+
+        # Contact email
+        send_mail(
+            email_subject,
+            message_body,
+            "ortegaj83@gmail.com",
+            [admin_info.email],
+            fail_silently=False,
+        )
+
+        messages.success(request, 'Gracias por contactarnos, te responderemos tan pronto como podamos.')
+        return redirect('contact')
+
     context = {
         'title': 'Contact',
     }
+
     return render(request, 'pages/contact.html', context)

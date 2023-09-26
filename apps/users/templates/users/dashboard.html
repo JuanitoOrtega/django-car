@@ -18,7 +18,7 @@
 
     <!--   Dashboard Start   -->
     <div class="container mt-50 mb-50">
-        {% include 'includes/messages.html' %}
+        {% include 'includes/notification.html' %}
         <div class="main-title" style="text-align:left !important;">
                 <h1>Bienvenido <span>{{ user.username }}</span></h1>
                 <p>Aquí están los autos que has solicitado</p>
@@ -27,6 +27,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Fecha</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Ubicación</th>
                     <th scope="col">Precio</th>
@@ -34,27 +35,22 @@
                 </tr>
             </thead>
             <tbody>
+                {% if inquiries %}
+                {% for inquiry in inquiries %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Lamborgini Huracan</td>
-                    <td>Austin</td>
-                    <td>$25000</td>
-                    <td><a href="#" class="btn btn-outline-dark">Ver auto</a></td>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ inquiry.created_at }}</td>
+                    <td>{{ inquiry.car_title }}</td>
+                    <td>{{ inquiry.city }}, {{ inquiry.state }}.</td>
+                    <td>${{ inquiry.car_price }}</td>
+                    <td><a href="{% url "car_detail" inquiry.car_id %}" class="btn btn-outline-dark">Ver auto</a></td>
                 </tr>
+                {% endfor %}
+                {% else %}
                 <tr>
-                    <th scope="row">2</th>
-                    <td>Lamborgini Huracan</td>
-                    <td>Austin</td>
-                    <td>$25000</td>
-                    <td><a href="#" class="btn btn-outline-dark">Ver auto</a></td>
+                    <td colspan="6" class="text-center">No tienes solicitudes enviadas.</td>
                 </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Lamborgini Huracan</td>
-                    <td>Austin</td>
-                    <td>$25000</td>
-                    <td><a href="#" class="btn btn-outline-dark">Ver auto</a></td>
-                </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>

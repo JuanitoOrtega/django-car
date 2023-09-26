@@ -484,5 +484,5 @@ $(function () {
 
 // Cerrar alert
 setTimeout(function () {
-    $('#message').fadeOut('slow');
+    $('#notification').fadeOut('slow');
 }, 5000);
