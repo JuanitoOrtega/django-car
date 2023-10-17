@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-
+from django.conf import settings
 from apps.cars.models import Car
 from .models import Team
 from django.contrib import messages
@@ -64,7 +64,7 @@ def contact(request):
         send_mail(
             email_subject,
             message_body,
-            "ortegaj83@gmail.com",
+            settings.EMAIL_HOST_USER,
             [admin_info.email],
             fail_silently=False,
         )
